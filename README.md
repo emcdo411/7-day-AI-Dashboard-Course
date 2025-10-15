@@ -69,12 +69,104 @@ By the end, you’ll build a **fully functional healthcare compliance dashboard*
 
 ```mermaid
 flowchart TD
-    A[Raw Healthcare Data] --> B[Mito Labs Cleaning]
-    B --> C[Python Trigger Logic]
-    C --> D[AI Prompt Engineering]
-    D --> E[Plotly Studio Visualization]
-    E --> F[Streamlit Dashboard]
-    F --> G["Published AI Dashboard<br/>Base44 / GitHub Pages"]
+    %% Direction & theme-friendly spacing
+    %% Advanced AI Context → Dashboard pipeline with governance & feedback
+
+    %% ---------- Subgraph: Data Sources ----------
+    subgraph S0[Data Sources]
+      A1[Raw Sanitization Logs (xlsx/csv)]
+      A2[Inventory & Supply Systems (API)]
+      A3[EHR Exports (PHI/PII)]
+      A4[Policy/SOP Docs (PDF/HTML)]
+    end
+
+    %% ---------- Subgraph: Ingestion & Cleaning (Mito/Jupyter) ----------
+    subgraph S1[Ingestion & Cleaning • Mito + Jupyter]
+      B1[Mount Workspace\n(JupyterLab / VSCode)]
+      B2[Interactive Cleaning\n(Mito Labs)]
+      B3[Validation & De-dup]
+      B4[Save Clean Tables\n(Parquet/CSV)]
+    end
+
+    %% ---------- Subgraph: Trigger Logic (Python) ----------
+    subgraph S2[Trigger Logic • Python + Pandas]
+      C1[Anomaly Flags\n(Nulls, Duplicates, Outliers)]
+      C2[Business Rules\n(Units, Thresholds)]
+      C3[Feature Build\n(Dept, Shift, MaterialType)]
+    end
+
+    %% ---------- Subgraph: AI Context Layer ----------
+    subgraph S3[AI Context Layer • RAG + Prompt Engineering]
+      D1[Chunk & Embed SOPs\n(Vector Store)]
+      D2{PII/PHI Present?}
+      D3[Mask/Redact + Access Control]
+      D4[Prompt Templates\n(Role, Tone, Constraints)]
+      D5[Semantic Retrieval\n(Top-k + Filters)]
+      D6[LLM Response\n(Chain-of-Thought Hidden)]
+    end
+
+    %% ---------- Subgraph: Visualization & App ----------
+    subgraph S4[Visualization & App • Streamlit + Plotly Studio]
+      E1[Curated DataFrames]
+      E2[Plotly Charts\n(Trends, Compliance, Top-3 Issues)]
+      E3[Streamlit Pages\n(KPIs, Drilldowns)]
+      E4[App Config\n(Secrets, RLS Proxies)]
+    end
+
+    %% ---------- Subgraph: Deployment & Monitoring ----------
+    subgraph S5[Deployment & Monitoring]
+      F1[Deploy App\n(Base44 / GH Pages + Backend)]
+      F2[Scheduled Jobs\n(Cron/CI) every 5 min]
+      F3[Audit Logs & Metrics\n(Refresh, Errors, Usage)]
+      F4[User Feedback Loop\n(Annotate, Flag, Corrections)]
+    end
+
+    %% ---------- Main Flow ----------
+    A1 & A2 & A3 & A4 -->|ingest| B1
+    B1 --> B2 --> B3 --> B4
+    B4 -->|read| C1 --> C2 --> C3
+
+    %% AI layer entry with governance
+    C3 --> D1
+    D1 --> D2
+    D2 -->|Yes| D3 --> D4
+    D2 -->|No| D4
+    D4 --> D5 --> D6
+
+    %% App build
+    D6 -->|contextual insights| E1
+    E1 --> E2 --> E3 --> E4
+
+    %% Deploy + monitor
+    E4 --> F1 --> F2 --> F3 --> F4
+    %% Feedback loop improves prompts, rules, and features
+    F4 -.->|label issues, add prompts| D4
+    F4 -.->|tighten rules| C2
+    F3 -.->|data quality alerts| B3
+
+    %% ---------- Styling ----------
+    classDef data fill:#1F2A44,stroke:#6C7AE0,color:#E6E8FF,stroke-width:1.2px;
+    classDef clean fill:#24273A,stroke:#8FA2FF,color:#E6E8FF,stroke-width:1.2px;
+    classDef logic fill:#1E2230,stroke:#A7B4FF,color:#E6E8FF,stroke-width:1.2px;
+    classDef ai fill:#1B1F2C,stroke:#B7C1FF,color:#E6E8FF,stroke-width:1.2px;
+    classDef app fill:#181C2A,stroke:#C6CEFF,color:#E6E8FF,stroke-width:1.2px;
+    classDef deploy fill:#141826,stroke:#D8D8F6,color:#E6E8FF,stroke-width:1.2px;
+    classDef decision fill:#2A2F45,stroke:#FFD166,color:#FFF5CC,stroke-width:1.4px;
+
+    class A1,A2,A3,A4 data
+    class B1,B2,B3,B4 clean
+    class C1,C2,C3 logic
+    class D1,D3,D4,D5,D6 ai
+    class E1,E2,E3,E4 app
+    class F1,F2,F3,F4 deploy
+    class D2 decision
+
+    %% Optional: clickable references (tooltips show on hover)
+    %% Remove or replace URLs as needed
+    click B2 "https://mito.ai" "Open Mito Labs"
+    click E3 "https://streamlit.io" "Open Streamlit"
+    click E2 "https://plotly.com" "Open Plotly"
+
 
 ```
 
