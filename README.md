@@ -74,7 +74,8 @@ flowchart TD
     C --> D[AI Prompt Engineering]
     D --> E[Plotly Studio Visualization]
     E --> F[Streamlit Dashboard]
-    F --> G[Published AI Dashboard | Base44 / GitHub Pages]
+    F --> G["Published AI Dashboard<br/>Base44 / GitHub Pages"]
+
 ```
 
 ---
