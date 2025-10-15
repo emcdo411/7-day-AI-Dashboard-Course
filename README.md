@@ -11,7 +11,8 @@
 ![Build Status](https://img.shields.io/badge/Build-Passing-00C853?style=for-the-badge&logo=github)
 ![AI Ready](https://img.shields.io/badge/AI--Ready-Powered_by_ChatGPT_5-0078D4?style=for-the-badge&logo=openai)
 ![Dashboard Framework](https://img.shields.io/badge/Dashboard-Streamlit_|_Plotly_Studio-FF6F00?style=for-the-badge&logo=plotly)
-![License](https://img.shields.io/badge/License-MIT-FFC107?style=for-the-badge)
+[![License: DACR](https://img.shields.io/badge/License-DACR_(Defensive_AI_Commercial_Rights)-4C4EFF?style=for-the-badge&logo=shield&logoColor=white)](./LICENSE.md)
+
 
 ---
 
