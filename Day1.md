@@ -80,10 +80,14 @@ RAG addresses hallucination by:
 
 ```mermaid
 flowchart LR
-    A[Query: "Top infection control issues"] --> B[Retriever: Vector Search on SOPs]
-    B --> C[Context: Retrieved Data (CDC + Hospital Logs)]
-    C --> D[Generator: LLM Output Layer]
-    D --> E[Insight: Contextualized Report]
+  A["Query: Top infection control issues"];
+  B["Retriever: Vector Search on SOPs"];
+  C["Context: Retrieved Data (CDC + Hospital Logs)"];
+  D["Generator: LLM Output Layer"];
+  E["Insight: Contextualized Report"];
+
+  A --> B --> C --> D --> E;
+
 ```
 
 ---
